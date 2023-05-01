@@ -22,9 +22,10 @@ export class ApiService {
         return this.http.get<any>(this.apiUrl, options).pipe(
             map((data: any) => {
                 const contacts = data.contacts.map((contact: any) => {
+                    const randomAvatar = Math.floor(Math.random() * 17) + 1
                     return {
                         ...contact,
-                        avatar: `./assets/avatar/${contact.id}.jpg`
+                        avatar: `./assets/avatar/${randomAvatar}.jpg`
                     };
                 });
                 return {
